@@ -5,15 +5,36 @@ from os.path import isfile, join
 import json
 # from fbprophet import Prophet
 import pickle
+import numpy as np
 import datetime as dt
 import markdown as md
 from flask_restx import Api, Resource, fields
 
-# database setup 
-# engine = create_engine("sqlite:///titanic.sqlite")
+import sqlalchemy
+from sqlalchemy.ext.automap import automap_base
+from sqlalchemy.orm import Session
+from sqlalchemy import create_engine, func
 
+#################################################
+# Database Setup
+#################################################
+engine = create_engine("sqlite:///data/movie_data.sqlite")
 
+# reflect an existing database into a new model
+# Base = automap_base()
+# reflect the tables
+# Base.prepare(engine, reflect=True)
 
+# Save reference to the table
+# Country = Base.classes.country_data
+# Genre = Base.classes.genre_data
+# Genre_List = Base.classes.genre_list_data
+# Languages = Base.classes.languages_data
+# Movies = Base.classes.movies_data
+
+#################################################
+# Flask Setup
+#################################################
 # create flask app
 app = Flask(__name__,static_url_path='/static')
 
@@ -22,12 +43,12 @@ blueprint = Blueprint("api", __name__, url_prefix="/api")
 api = Api(blueprint, doc="/doc/")
 app.register_blueprint(blueprint)
 
-# read in dataset
-df_all = pd.read_csv("data/main.csv")
-df_genre = pd.read_csv("data/genre.csv")
-df_languages = pd.read_csv("data/languages.csv")
-df_country = pd.read_csv("data/country.csv")
-df_genre_list = pd.read_csv("data/genre_list.csv")
+# read in dataset from csv
+# df_all = pd.read_csv("data/main.csv")
+# df_genre = pd.read_csv("data/genre.csv")
+# df_languages = pd.read_csv("data/languages.csv")
+# df_country = pd.read_csv("data/country.csv")
+# df_genre_list = pd.read_csv("data/genre_list.csv")
 
 # -------------HTML pages routes------------- #
 @app.route("/")
@@ -44,29 +65,34 @@ def stats_genre():
 # -------------HTML pages routes END------------- #
 
 # -------------API routes------------- #
+@api.route("/countries")
+class countries(Resource):
+    def get(self):
+        results = [
+            {
+                "id": list(row)[0],
+                "movie_id": list(row)[1],
+                "country":list(row)[2],
+
+            }for row in engine.execute('select*from country_data').all()]
+        return {"countries":results}
+
+
 @api.route("/genre_list")
 class genre_list(Resource):
     def get(self):
-        return df_genre_list.to_dict()
-
-@api.route("/country/<selectedCountry>")
-class Country(Resource):
-    def get(self, selectedCountry):
-        return df_country[df_country['Country Availability']==selectedCountry].to_dict()
-
-@api.route("/languages/<selectedlanguages>")
-class Languages(Resource):
-    def get(self, selectedlanguages):
-        return df_languages[df_languages['Languages']==selectedlanguages].to_dict()
-
-@api.route("/genre/<selectedGenre>")
-class Genre(Resource):
-    def get(self, selectedGenre):
-        return df_genre[df_genre['Genre']==selectedGenre].to_dict()
+        results = [
+            {
+                "id": list(row)[0],
+                "genre": list(row)[1],
+            }for row in engine.execute('select*from genre_list_data').all()]
+        return {"genre":results}
 
 @api.route("/genreTop10/<selectedGenre>")
 class Genre(Resource):
     def get(self, selectedGenre):
+        df_genre = pd.read_sql('select*from genre_data',engine)
+        df_all = pd.read_sql('select*from movies_data',engine)
         df_selected = df_genre[df_genre['Genre']==selectedGenre]
         df_selected_movie = df_selected['movie_id']
         df_trim = df_all[['Boxoffice','movie_id','Title']]
@@ -75,6 +101,33 @@ class Genre(Resource):
         df_show = df_show.sort_values(by=['Boxoffice'], ascending=False)
         df_show = df_show.head(10)
         return df_show.to_dict()
+
+@api.route("/language_list")
+class language_list(Resource):
+    def get(self):
+        results = [
+            {
+                "id": list(row)[0],
+                "genre": list(row)[1],
+            }for row in engine.execute('select*from genre_list_data').all()]
+        return {"genre":results}
+
+# @api.route("/country/<selectedCountry>")
+# class Country(Resource):
+#     def get(self, selectedCountry):
+#         return df_country[df_country['Country Availability']==selectedCountry].to_dict()
+
+# @api.route("/languages/<selectedlanguages>")
+# class Languages(Resource):
+#     def get(self, selectedlanguages):
+#         return df_languages[df_languages['Languages']==selectedlanguages].to_dict()
+
+# @api.route("/genre/<selectedGenre>")
+# class Genre(Resource):
+#     def get(self, selectedGenre):
+#         return df_genre[df_genre['Genre']==selectedGenre].to_dict()
+
+
 # -------------API routes END------------- #
 
 
