@@ -27,6 +27,7 @@ df_all = pd.read_csv("data/main.csv")
 df_genre = pd.read_csv("data/genre.csv")
 df_languages = pd.read_csv("data/languages.csv")
 df_country = pd.read_csv("data/country.csv")
+df_genre_list = pd.read_csv("data/genre_list.csv")
 
 # -------------HTML pages routes------------- #
 @app.route("/")
@@ -43,6 +44,11 @@ def stats_genre():
 # -------------HTML pages routes END------------- #
 
 # -------------API routes------------- #
+@api.route("/genre_list")
+class genre_list(Resource):
+    def get(self):
+        return df_genre_list.to_dict()
+
 @api.route("/country/<selectedCountry>")
 class Country(Resource):
     def get(self, selectedCountry):
