@@ -2,12 +2,14 @@
 genre_list_url = "/api/genre_list"
 
 d3.json(genre_list_url).then(data => {
-    Gen_list = data.Genre
-    for (const [key, value] of Object.entries(Gen_list)) {
+    Gen_list = data.genre
+
+    Gen_list.forEach((name)=>{
+        console.log(name.genre)
         var option = d3.select("#selGenre").append("option");
-        option.text(value);
-        option.attr("value",value);
-      }
+        option.text(name.genre);
+        option.attr("value",name.genre);
+    });
 });
 
 // Create function for plotting Top10
@@ -43,4 +45,4 @@ function genretop10(Genre){
         Plotly.newPlot("Top10byGenre", data, layout);
     });}
 
-genretop10('Comedy')
+genretop10('Romance')
