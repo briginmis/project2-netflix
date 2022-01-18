@@ -1,178 +1,50 @@
-<!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Project-2-stats_per_genre</title>
+{% extends "base.html" %}
 
-    <!-- Bring in our bootstrap stylesheet -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-      crossorigin="anonymous"
-    />
-
-    <link rel="stylesheet" href="style.css" />
-  </head>
+{% block body %}
   <div class="container">
-    <!-- Our columns function in rows. -->
+    <!-- Title of the page here -->
     <div class="row">
-      <!-- Columns have 12 areas of width to work with. -->
+      <h1>Statistic By Genre</h1>
+    </div>
+    <hr>
 
-      <!-- One third of screen (4/12) -->
+    <!-- New Row for the content -->
+    <div class="row">
 
-      <!-- One third of screen (4/12) -->
-      <div class="col-md-4">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#"> </a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="comparison.html">Stats by Genre</a>
-                  </li>
-
-                           
-           
-              </div>
-            </div>
-          </nav>
+      <!-- First Column -->
+      <div class="col-md-7">
+        <!-- Divider for header -->
+        <div class="header">
+            <h3>Top 10 by Genre</h3>
+        </div>
+        <hr>
+        <!-- Divider place holder for Pie Chart  -->
+        <div id="Top10byGenre"></div>
+        <a target="_blank" href="visualisations/lat_vs_temp.png">
+          <img src="visualisations/lat_vs_temp.png" alt="Pie chart with Genre"
+            width="290" height="290">
+        </a>
       </div>
-
-
-    <div class="container">
-        <!-- Our columns function in rows. -->
+        
+      <!-- 2nd Column -->
+      <div class="col-md-5">
+        <div class="header">
+          <h3>Histogram filter by Genre</h3>
+        </div>
+        <hr>
+        
         <div class="row">
-          <!-- Columns have 12 areas of width to work with. -->
- 
-          <!-- One third of screen (4/12) -->
- 
-          <!-- One third of screen (4/12) -->
-          <div class="col-md-4">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
-                  <a class="navbar-brand" href="#"> </a>
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-                      <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="comparison.html">Home Page</a>
-                      </li>
-      
-                      <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="comparison.html">Stats by Genre</a>
-                      </li>
-
-                      <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="Resources/table.html">Stats by Country</a>
-                      </li>
-                               
-               
-                  </div>
-                </div>
-              </nav>
+          <div class="col-md-6">
+            <a target="_blank" href="visualisations/lat_vs_Cloudiness.png">
+            <img src="visualisations/lat_vs_Cloudiness.png" alt="Histogram filter by Genre" width="290" height="290">
+            </a>
           </div>
- 
-          <!-- Columns float left, so all adjacent rows will appear next to each other (as long as not all space gets taken up) -->
         </div>
-      </div>
-   
-      <body>
- 
-    <!-- Our rows function in containers (grid created). -->
-    <div class="container">
-      <!-- Our columns function in rows. -->
-      <div class="row">
-        <!-- Columns have 12 areas of width to work with. -->
-
-        <!-- One third of screen (4/12) -->
-        <div class="col-md-4">
-          <!-- This is column 1 of 3 -->
-        </div>
-
-        <!-- One third of screen (4/12) -->
-        <div class="col-md-4">
-          <!-- This is column 2 of 3 -->
-        </div>
-
-        <!-- One third of screen (4/12) -->
-        <div class="col-md-4">
-          <!-- This is column 3 of 3 -->
-        </div>
-
-        <!-- Columns float left, so all adjacent rows will appear next to each other (as long as not all space gets taken up) -->
       </div>
     </div>
+  </div>
+  {% include "dependency.html" %}
 
-    <!-- Creates the Overall Grid -->
-    <div class="container">
-      <!-- First Row -->
-      <div class="row">
-        <div class="col-md-7">
-            <div class="header">
-                <h1>Pie chart with Genre</h1>
-            </div>
-            <br>
-            <hr>
+  <script src="../static/js/genre.js"></script>
 
-            <a target="_blank" href="visualisations/lat_vs_temp.png">
-                <img src="visualisations/lat_vs_temp.png" alt="Pie chart with Genre"
-                width="290" height="290">
-               
-            </a>
-
-              <br>
-   
-      
-        </div>
-        <!-- First (and only column) -->
-        <div class="col-md-5">
-            <div class="header">
-                <h1>Histogram filter by Genre</h1>
-            </div>
-            <br>
-            <hr>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-
-                        <a target="_blank" href="visualisations/lat_vs_Cloudiness.png">
-                            <img src="visualisations/lat_vs_Cloudiness.png" alt="Histogram filter by Genre"
-                            width="290" height="290">
-
-
-                        </a>
-
-
-
-                    </div>
-                    </div>
-
-                </div>
-
-           
-            </div>
-
-           
-
-       
-        </div>
-      </div>
-
-     
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-      crossorigin="anonymous"
-    ></script>
-
-  </body>
-</html>
+{% endblock %}
