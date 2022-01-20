@@ -20,17 +20,6 @@ from sqlalchemy import create_engine, func
 #################################################
 engine = create_engine("sqlite:///data/movie_data.sqlite")
 
-# reflect an existing database into a new model
-# Base = automap_base()
-# reflect the tables
-# Base.prepare(engine, reflect=True)
-
-# Save reference to the table
-# Country = Base.classes.country_data
-# Genre = Base.classes.genre_data
-# Genre_List = Base.classes.genre_list_data
-# Languages = Base.classes.languages_data
-# Movies = Base.classes.movies_data
 
 #################################################
 # Flask Setup
@@ -42,13 +31,6 @@ app = Flask(__name__,static_url_path='/static')
 blueprint = Blueprint("api", __name__, url_prefix="/api")
 api = Api(blueprint, doc="/doc/")
 app.register_blueprint(blueprint)
-
-# read in dataset from csv
-# df_all = pd.read_csv("data/main.csv")
-# df_genre = pd.read_csv("data/genre.csv")
-# df_languages = pd.read_csv("data/languages.csv")
-# df_country = pd.read_csv("data/country.csv")
-# df_genre_list = pd.read_csv("data/genre_list.csv")
 
 # -------------HTML pages routes------------- #
 @app.route("/")
@@ -111,16 +93,6 @@ class Genre(Resource):
         df_show = df_show.head(10)
         return df_show.to_dict()
 
-# @api.route("/country/<selectedCountry>")
-# class Country(Resource):
-#     def get(self, selectedCountry):
-#         return df_country[df_country['Country Availability']==selectedCountry].to_dict()
-
-# @api.route("/languages/<selectedlanguages>")
-# class Languages(Resource):
-#     def get(self, selectedlanguages):
-#         return df_languages[df_languages['Languages']==selectedlanguages].to_dict()
-
 @api.route("/genremovies")
 class GenreMovies(Resource):
     def get(self):
@@ -148,8 +120,6 @@ class GenreLanguage(Resource):
         selected_language_df = merge_df[merge_df['Languages'] == selectedLanguage]
         grouped_df = selected_language_df.groupby('Genre').count()
         return grouped_df.to_dict()
-
-
 # -------------API routes END------------- #
 
 
