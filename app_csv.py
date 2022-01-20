@@ -65,6 +65,15 @@ def stats_genre():
 # -------------HTML pages routes END------------- #
 
 # -------------API routes------------- #
+@api.route("/main")
+class Movie_count(Resource):
+    def get(self):
+        df_all = pd.read_sql('select*from movies_data',engine)
+        df_netflix_release_date = df_all['Netflix Release Date']
+        df_movie_count = df_netflix_release_date.str[:4].value_counts()
+        
+        return df_movie_count.to_dict()
+
 @api.route("/countries")
 class countries(Resource):
     def get(self):
