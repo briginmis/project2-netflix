@@ -2,7 +2,7 @@ function init() {
 
     // Load language chart 1
 
-    url = "/api/genrelanguage/English";
+    url = "/api/genrelanguage/Aboriginal";
 
     d3.json(url).then(function(data){
 
@@ -23,8 +23,14 @@ function init() {
         var data = [trace1];
 
         var layout = {
-            title: 'Number of movies by genre in English',
-            barmode: 'group'
+            title: 'Number of movies by genre in Aboriginal',
+            barmode: 'group',
+            xaxis: {
+                title: 'Genres'
+            },
+            yaxis: {
+                title: 'Number of movies'
+            }
         };
         
         Plotly.newPlot("GenreFilterLanguage", data, layout);
@@ -33,7 +39,7 @@ function init() {
 
     // Load language chart 2
 
-    url = "/api/genrelanguage/Spanish";
+    url = "/api/genrelanguage/Aboriginal";
 
     d3.json(url).then(function(data){
 
@@ -54,8 +60,14 @@ function init() {
         var data = [trace1];
 
         var layout = {
-            title: 'Number of movies by genre in Spanish',
-            barmode: 'group'
+            title: 'Number of movies by genre in Aboriginal',
+            barmode: 'group',
+            xaxis: {
+                title: 'Genres'
+            },
+            yaxis: {
+                title: 'Number of movies'
+            }
         };
         
         Plotly.newPlot("GenreFilterLanguage2", data, layout);
@@ -64,7 +76,7 @@ function init() {
 
     // Load top 10 movies chart
 
-    url = "/api/genreTop10/Drama"
+    url = "/api/genreTop10/Action"
 
     d3.json(url).then(function(data){
 
@@ -75,21 +87,36 @@ function init() {
         var Revenue = Object.values(all_revenue)
         
         var trace1 = {
-            x: Titles,
-            y: Revenue,
+            x: Revenue,
+            y: Titles,
             type: "bar",
             transforms: [{
                 type: 'sort',
                 target: 'y',
                 order: 'descending'
-            }]
+            }],
+            orientation: "h",
+            text: Titles,
+            marker: {
+                color: 'rgb(158,202,225)',
+                line: {
+                  color: 'rgb(8,48,107)',
+                  width: 1.5
+                }
+            }
         };
         
         var data = [trace1];
 
         var layout = {
             title: 'Top Drama Movies on Netflix',
-            barmode: 'group'
+            barmode: 'group',
+            yaxis: {
+                visible: false
+            },
+            xaxis: {
+                title: 'Box Office Revenue ($)'
+            }
         };
         
         Plotly.newPlot("Top10byGenre", data, layout);
@@ -155,21 +182,36 @@ function updategenretop10(){
         var Revenue = Object.values(all_revenue)
         
         var trace1 = {
-            x: Titles,
-            y: Revenue,
+            x: Revenue,
+            y: Titles,
             type: "bar",
             transforms: [{
                 type: 'sort',
                 target: 'y',
                 order: 'descending'
-            }]
+            }],
+            orientation: "h",
+            text: Titles,
+            marker: {
+                color: 'rgb(158,202,225)',
+                line: {
+                  color: 'rgb(8,48,107)',
+                  width: 1.5
+                }
+            }
         };
         
         var data = [trace1];
 
         var layout = {
             title: 'Top ' + Genre + ' Movies on Netflix',
-            barmode: 'group'
+            barmode: 'group',
+            yaxis: {
+                visible: false
+            },
+            xaxis: {
+                title: 'Box Office Revenue ($)'
+            }
         };
         
         Plotly.newPlot("Top10byGenre", data, layout);
@@ -237,7 +279,13 @@ function updateLanguages(){
 
         var layout = {
             title: 'Number of movies by genre in ' + Language,
-            barmode: 'group'
+            barmode: 'group',
+            xaxis: {
+                title: 'Genres'
+            },
+            yaxis: {
+                title: 'Number of movies'
+            }
         };
         
         Plotly.newPlot("GenreFilterLanguage", data, layout);
@@ -276,7 +324,13 @@ function updateLanguages2(){
 
         var layout = {
             title: 'Number of movies by genre in ' + Language,
-            barmode: 'group'
+            barmode: 'group',
+            xaxis: {
+                title: 'Genres'
+            },
+            yaxis: {
+                title: 'Number of movies'
+            }
         };
         
         Plotly.newPlot("GenreFilterLanguage2", data, layout);
