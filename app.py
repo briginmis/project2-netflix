@@ -10,11 +10,7 @@ import markdown as md
 from flask_restx import Api, Resource, fields
 
 # database setup 
-country_engine = create_engine("sqlite:///country_data.sqlite")
-genre_engine = create_engine("sqlite:///genre_data.sqlite")
-languages_engine = create_engine("sqlite:///languages_data.sqlite")
-movie_engine = create_engine("sqlite:///movie_data.sqlite")
-
+engine = create_engine("sqlite:///movie_data.sqlite")
 
 # create flask app
 app = Flask(__name__,static_url_path='/static')

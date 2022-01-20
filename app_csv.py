@@ -111,16 +111,6 @@ class Genre(Resource):
         df_show = df_show.head(10)
         return df_show.to_dict()
 
-@api.route("/language_list")
-class language_list(Resource):
-    def get(self):
-        results = [
-            {
-                "id": list(row)[0],
-                "genre": list(row)[1],
-            }for row in engine.execute('select*from genre_list_data').all()]
-        return {"genre":results}
-
 # @api.route("/country/<selectedCountry>")
 # class Country(Resource):
 #     def get(self, selectedCountry):
@@ -131,10 +121,33 @@ class language_list(Resource):
 #     def get(self, selectedlanguages):
 #         return df_languages[df_languages['Languages']==selectedlanguages].to_dict()
 
-# @api.route("/genre/<selectedGenre>")
-# class Genre(Resource):
-#     def get(self, selectedGenre):
-#         return df_genre[df_genre['Genre']==selectedGenre].to_dict()
+@api.route("/genremovies")
+class GenreMovies(Resource):
+    def get(self):
+        genre_df = pd.read_sql('select * from genre_data', engine)
+        grouped_df = genre_df.groupby('Genre').count()
+        return grouped_df.to_dict()
+
+
+@api.route("/language_list")
+class languages_list(Resource):
+    def get(self):
+        results = [
+            {
+                "id": list(row)[0],
+                "language": list(row)[1],
+            }for row in engine.execute('select*from languages_list_data').all()]
+        return {"language":results}
+
+@api.route("/genrelanguage/<selectedLanguage>")
+class GenreLanguage(Resource):
+    def get(self, selectedLanguage):
+        genre_df = pd.read_sql('select * from genre_data', engine)
+        languages_df = pd.read_sql('select * from languages_data', engine)
+        merge_df = pd.merge(genre_df, languages_df, on = "movie_id")
+        selected_language_df = merge_df[merge_df['Languages'] == selectedLanguage]
+        grouped_df = selected_language_df.groupby('Genre').count()
+        return grouped_df.to_dict()
 
 
 # -------------API routes END------------- #
