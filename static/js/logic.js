@@ -26,3 +26,13 @@ d3.json(link).then(function (data) {
   // Creating a GeoJSON layer with the retrieved data
   L.geoJson(data).addTo(myMap);
 });
+
+// // Create a new marker
+// // Pass in some initial options, and then add it to the map using the addTo method
+// var marker = L.marker([-28.01, 153.4], {
+//   draggable: true,
+//   title: "My First Marker",
+// }).addTo(myMap);
+
+// // Binding a pop-up to our marker
+// marker.bindPopup("Hello There!");
