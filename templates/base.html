@@ -1,5 +1,11 @@
 <html>
-  <head>
+
+<head>
+    <!-- <style>
+        div {
+          background-image: url('https://wallpaperaccess.com/full/712390.jpg');
+        }
+    </style> -->
     <title>Netflix is Cool</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,7 +31,15 @@
       crossorigin=""
     />
     <!-- <link href="../static/css/styles.css" rel="stylesheet"> -->
-  </head>
+</head>
+
+<body>
+            
+    {% include "navbar.html" %}
+    {% block body %} {% endblock %}
+    {% include "footer.html" %}
+
+</body>
 
   <body>
     {% include "navbar.html" %} {% block body %} {% endblock %} {% include

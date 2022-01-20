@@ -4,7 +4,7 @@
   <div class="container">
     <!-- Title of the page here -->
     <div class="row">
-      <h1>Statistic By Genre</h1>
+      <h1>Statistics By Genre</h1>
     </div>
     <hr>
 
@@ -12,37 +12,60 @@
     <div class="row">
 
       <!-- First Column -->
-      <div class="col-md-7">
+      <div class="col-md-6">
         <!-- Divider for header -->
         <div class="header">
-            <h3>Top 10 by Genre</h3>
+            <h3>Top 10 Movies by Genre</h3>
             <select id="selGenre"> 
             </select>
         </div>
 
         <hr>
-        <!-- Divider place holder for Pie Chart  -->
+        <!-- Divider place holder for Bar Chart  -->
         <div id="Top10byGenre"></div>
-
       </div>
-        
-      <!-- 2nd Column -->
-      <div class="col-md-5">
+
+      <!-- Divider place holder for Pie Chart -->
+
+      <div class="col-md-6">
         <div class="header">
-          <h3>Histogram filter by Genre</h3>
-        </div>
-        <hr>
+          <h3>Number of movies by Genre</h3>
+          <br>
+          <hr>
+          <div id="GenrePieChart"></div>
+      </div>
+    
+    </div>
+  </div>
+
+
+    <hr>
+    <div class="container">
+    <!-- Second row -->
+    <div class="row">
         
-        <div class="row">
-          <div class="col-md-6">
-            <a target="_blank" href="visualisations/lat_vs_Cloudiness.png">
-            <img src="visualisations/lat_vs_Cloudiness.png" alt="Histogram filter by Genre" width="290" height="290">
-            </a>
-          </div>
+      <div class="col-md-12">
+        <div class="header">
+          <h3>Genres filtered by Language</h3>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">   
+          <select id="selLanguage"> </select>
+          <hr>
+          <div id="GenreFilterLanguage"></div>
         </div>
+
+        <div class="col-md-6">   
+          <select id="selLanguage2"> </select>
+          <hr>
+          <div id="GenreFilterLanguage2"></div>
+        </div>
+
       </div>
     </div>
   </div>
+</div>
   {% include "dependency.html" %}
 
   <script src="../static/js/genre.js"></script>
