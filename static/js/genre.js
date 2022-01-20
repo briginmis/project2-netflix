@@ -109,7 +109,7 @@ function init() {
         var data = [trace1];
 
         var layout = {
-            title: 'Top Drama Movies on Netflix',
+            title: 'Top Action Movies',
             barmode: 'group',
             yaxis: {
                 visible: false
