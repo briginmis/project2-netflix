@@ -2,31 +2,22 @@
 {% block body %}
 
 <div class="container">
+
+  <div class="row">
+    <h1>Statistics By Country</h1>
+  </div>
+  <hr>
   <!-- First Row -->
   <div class="row">
-    <div class="col-md-7">
-      <br />
+    <div class="col-md-12">
 
       <div class="header">
-        <h3>Count of available movie in each country heat map with tooltip</h3>
+        <h3>Number of available movies per country</h3>
       </div>
-      <br />
       <hr />
       <div id="map" style="height: 400px"></div>
-
-      <br />
     </div>
-    <!-- First (and only column) -->
-    <div class="col-md-5">
-      <div class="header">
-        <br />
 
-        <h3>Count of availble movie in each language</h3>
-      </div>
-      <br />
-
-      <hr />
-    </div>
   </div>
 </div>
 {% include "dependency.html" %}
