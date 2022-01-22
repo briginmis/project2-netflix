@@ -1,29 +1,37 @@
-{% extends "base.html" %} 
-{% block body %}
+{% extends "base.html" %} {% block body %}
 
 <div class="container">
-
   <div class="row">
     <h1>Statistics By Country</h1>
   </div>
-  <hr>
+  <hr />
   <!-- First Row -->
   <div class="row">
     <div class="col-md-12">
-
       <div class="header">
         <h3>Number of available movies per country</h3>
       </div>
       <hr />
       <div id="map" style="height: 400px"></div>
     </div>
-
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="header">
+        <h3>Number of available movies per country</h3>
+      </div>
+      <hr />
+      <div id="map" style="height: 400px"></div>
+    </div>
   </div>
 </div>
 {% include "dependency.html" %}
 
 <!-- Leaflet-Choropleth JavaScript -->
 <script type="text/javascript" src="static/js/choropleth.js"></script>
-
 <script src="../static/js/logic.js"></script>
+
+<script type="text/javascript" src="static/js/choropleth.js"></script>
+<script src="../static/js/logic2.js"></script>
+
 {% endblock %}
