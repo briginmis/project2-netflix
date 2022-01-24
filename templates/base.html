@@ -1,6 +1,5 @@
 <html>
-
-<head>
+  <head>
     <!-- <style>
         div {
           background-image: url('https://wallpaperaccess.com/full/712390.jpg');
@@ -30,11 +29,20 @@
       integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
       crossorigin=""
     />
+    <!-- Marker Cluster CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css"
+    />
     <!-- <link href="../static/css/styles.css" rel="stylesheet"> -->
-</head>
-            
-    {% include "navbar.html" %}
-    {% block body %} {% endblock %}
-    {% include "footer.html" %}
+  </head>
 
+  {% include "navbar.html" %} {% block body %} {% endblock %} {% include
+  "footer.html" %}
 </html>

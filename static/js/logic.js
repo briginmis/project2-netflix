@@ -124,20 +124,58 @@ L.tileLayer(
 ).addTo(myMap2);
 
 // Use this link to get the geojson data.
-var link = "static/data/countries_to_use.geojson";
+//var link = "static/data/countries_to_use.geojson";
 
-var geojson;
+//var geojson;
 
 // Grabbing our GeoJSON data..
-d3.json(link).then(function (data) {
-  console.log(data);
+//d3.json(link).then(function (data) {
+//console.log(data);
 
-  // Create a new marker cluster group
-  var markers = L.markerClusterGroup();
+// Country data
+var countries = {
+  "United States": {
+    location: [37.09024, -95.712891],
+    netfilx_movie: 4928,
+  },
 
-  // Add a new marker to the cluster group and bind a pop-up
-  markers.addLayer(L.marker(data.properties.netflix_movie));
+  Canada: {
+    location: [56.130366, -106.346771],
+    netflix_movie: 5183,
+  },
+  Mexico: {
+    location: [23.634501, -102.552784],
+    netflix_movie: 4531,
+  },
+  Brazil: {
+    location: [-14.235004, -51.92528],
+    netflix_movie: 4423,
+  },
+
+  Argentina: {
+    location: [-38.416097, -63.616672],
+    netflix_movie: 4525,
+  },
+
+  Colombia: {
+    location: [4.570868, -74.297333],
+    netflix_movie: 4295,
+  },
+};
+// Add a new marker to the cluster group and bind a pop-up
+//markers.addLayer(L.marker([location.coordinates[1], location.coordinates[0]])
+//.bindPopup(response[i].descriptor));
+var dict = Object.entries(countries).map(([key, values]) => {
+  return key, values;
 });
+
+// Create a new marker cluster group
+var markers = L.markerClusterGroup();
+var country = dict.forEach((item) => {
+  item.location;
+  markers.addLayer(L.marker(item.location).bindPopup(`${item.netflix_movie}`));
+});
+// Add a new marker to the cluster group and bind a pop-up
 
 // Add our marker cluster layer to the map
 myMap2.addLayer(markers);
