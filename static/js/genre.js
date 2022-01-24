@@ -92,8 +92,8 @@ function init() {
             type: "bar",
             transforms: [{
                 type: 'sort',
-                target: 'y',
-                order: 'descending'
+                target: 'x',
+                order: 'ascending'
             }],
             orientation: "h",
             text: Titles,
@@ -187,8 +187,8 @@ function updategenretop10(){
             type: "bar",
             transforms: [{
                 type: 'sort',
-                target: 'y',
-                order: 'descending'
+                target: 'x',
+                order: 'ascending'
             }],
             orientation: "h",
             text: Titles,
