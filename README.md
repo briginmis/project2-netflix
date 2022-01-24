@@ -20,7 +20,7 @@ Users will be able to answer the following questions:
 # Solution
 We have created a flask app to render different pages to answer the above questions.
 
-I have a demo app running on: [https://retail-challenge-lite.herokuapp.com/](https://retail-challenge-lite.herokuapp.com/)
+I have a demo app running on: [https://project2-netflix.herokuapp.com/](https://project2-netflix.herokuapp.com/)
 
 Below are screenshots of what the app looks like when running:
 
