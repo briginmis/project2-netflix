@@ -3,7 +3,6 @@ import pandas as pd
 from os import listdir
 from os.path import isfile, join
 import json
-# from fbprophet import Prophet
 import pickle
 import numpy as np
 import datetime as dt
