@@ -163,6 +163,101 @@ var countries = {
     location: [4.570868, -74.297333],
     netflix_movie: 4295,
   },
+
+  Australia: {
+    location: [-25.274398, 133.775136],
+    netflix_movie: 5049,
+  },
+
+  Russia: {
+    location: [61.52401, 105.318756],
+    netflix_movie: 4716,
+  },
+
+  India: {
+    location: [20.593684, 78.96288],
+    netflix_movie: 5032,
+  },
+
+  Thailand: {
+    location: [15.870032, 100.992541],
+    netflix_movie: 5071,
+  },
+
+  Malaysia: {
+    location: [4.210484, 101.975766],
+    netflix_movie: 4628,
+  },
+
+  Japan: {
+    location: [36.204824, 138.252924],
+    netflix_movie: 5174,
+  },
+
+  Korea: {
+    location: [35.907757, 127.766922],
+    netflix_movie: 4281,
+  },
+
+  Iceland: {
+    location: [64.963051, -19.020835],
+    netflix_movie: 4612,
+  },
+
+  Sweden: {
+    location: [60.128161, 18.643501],
+    netflix_movie: 4207,
+  },
+
+  Lithuania: {
+    location: [55.169438, 23.881275],
+    netflix_movie: 4765,
+  },
+
+  Poland: {
+    location: [51.919438, 19.145136],
+    netflix_movie: 4451,
+  },
+
+  Germany: {
+    location: [51.165691, 10.451526],
+    netflix_movie: 4451,
+  },
+
+  France: {
+    location: [46.227638, 2.213749],
+    netflix_movie: 4547,
+  },
+
+  Italy: {
+    location: [41.87194, 12.56738],
+    netflix_movie: 4529,
+  },
+
+  Turkey: {
+    location: [38.963745, 35.243322],
+    netflix_movie: 4227,
+  },
+
+  Greece: {
+    location: [39.074208, 21.824312],
+    netflix_movie: 4632,
+  },
+
+  Romania: {
+    location: [45.943161, 24.96676],
+    netflix_movie: 5023,
+  },
+
+  Hungary: {
+    location: [47.162494, 19.503304],
+    netflix_movie: 5195,
+  },
+
+  Czech: {
+    location: [49.817492, 15.472962],
+    netflix_movie: 4765,
+  },
 };
 // Add a new marker to the cluster group and bind a pop-up
 //markers.addLayer(L.marker([location.coordinates[1], location.coordinates[0]])
